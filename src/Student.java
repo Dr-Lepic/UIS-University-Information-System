@@ -34,7 +34,10 @@ public class Student implements QNA{
     @Override
     public void ansQuestion(Question question, String answer) {
         Answer answer1 = new Answer(question, answer);
-        question.teacher.askedQuestionList.remove(question);
+        //if a question is asked to all students then we will only remove one time from teacher list
+        if(question.teacher.askedQuestionList.contains(question)){
+            question.teacher.askedQuestionList.remove(question);
+        }
         question.student.answerList.add(answer1);
         question.teacher.answerList.add(answer1);
 

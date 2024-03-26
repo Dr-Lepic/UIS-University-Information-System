@@ -4,14 +4,11 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="7b707b6c-15ac-4fba-8263-5a26e54cd16e" name="Changes" comment="Added git command text">
-      <change afterPath="$PROJECT_DIR$/src/Answer.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/QNA.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Question.java" afterDir="false" />
+    <list default="true" id="7b707b6c-15ac-4fba-8263-5a26e54cd16e" name="Changes" comment="Created two directional QNA system and it works!!">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Git commands.txt" beforeDir="false" afterPath="$PROJECT_DIR$/Git commands.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Course.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Course.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/QNA.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/QNA.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Question.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Question.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Student.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Student.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Teacher.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Teacher.java" afterDir="false" />
     </list>
@@ -42,6 +39,9 @@
         <option name="url" value="https://github.com/Dr-Lepic/UIS-University-Information-System.git" />
       </UrlAndAccount>
     </option>
+  </component>
+  <component name="ProblemsViewState">
+    <option name="selectedTabId" value="CurrentFile" />
   </component>
   <component name="ProjectColorInfo">{
   &quot;associatedIndex&quot;: 7
@@ -81,7 +81,7 @@
       <option name="presentableId" value="Default" />
       <updated>1710992406659</updated>
       <workItem from="1710992407726" duration="2126000" />
-      <workItem from="1711433703754" duration="3942000" />
+      <workItem from="1711433703754" duration="7671000" />
     </task>
     <task id="LOCAL-00001" summary="Added git command text">
       <option name="closed" value="true" />
@@ -91,7 +91,15 @@
       <option name="project" value="LOCAL" />
       <updated>1710993301451</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="Created two directional QNA system and it works!!">
+      <option name="closed" value="true" />
+      <created>1711438359373</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1711438359373</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -111,6 +119,7 @@
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
     <MESSAGE value="Added git command text" />
-    <option name="LAST_COMMIT_MESSAGE" value="Added git command text" />
+    <MESSAGE value="Created two directional QNA system and it works!!" />
+    <option name="LAST_COMMIT_MESSAGE" value="Created two directional QNA system and it works!!" />
   </component>
 </project>

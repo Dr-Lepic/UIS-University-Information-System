@@ -12,8 +12,6 @@ public class Teacher implements QNA{
     //
 
     //toString method
-
-
     @Override
     public String toString() {
         return "Teacher{" +
@@ -40,6 +38,25 @@ public class Teacher implements QNA{
         question.student.answerList.add(answer1);
         question.teacher.answerList.add(answer1);
 
+    }
+
+    //a method to ask question to all students of a particular course.
+    //will run a for-each loop in the student list of teacher. If course matches,
+    //then question will be inserted to his(Student) list
+
+    public void askQuestionAll( Teacher teacher,String question, Course course){
+        Question question1 = new Question(this, course, question);
+        for(Student i : studentList){
+            if(i.courseList.contains(course)){
+                question1.student = i;
+                i.questionList.add(question1);
+            }
+        }
+    }
+
+    //a method to clear answer list.
+    private void clearAnsList(){
+        answerList.clear();
     }
 
 
