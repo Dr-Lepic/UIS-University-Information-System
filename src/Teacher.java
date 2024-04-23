@@ -59,5 +59,20 @@ public class Teacher implements QNA{
         answerList.clear();
     }
 
+    public void giveNotification(Student student, Course course, String notification){
+
+        Notification notification1 = new Notification(course, notification, this);
+        student.notificationList.add(notification1);
+    }
+
+    public void giveNotification(Course course, String notification){
+
+        Notification notification1 = new Notification(course, notification, this);
+        for (Student i : studentList) {
+            i.notificationList.add(notification1);
+        }
+    }
+
+
 
 }

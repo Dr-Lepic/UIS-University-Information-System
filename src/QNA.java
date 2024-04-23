@@ -7,7 +7,7 @@ public interface QNA {
     ArrayList <Question> askedQuestionList = new ArrayList<>();//to store asked question.
 
     //to ask question and save them in list
-    public void askQuestion(Student student, Teacher teacher,String question, Course course);
+    void askQuestion(Student student, Teacher teacher,String question, Course course);
 
     //to answer questions and store them in list. removes questions from the list
     void ansQuestion(Question question, String answer);
