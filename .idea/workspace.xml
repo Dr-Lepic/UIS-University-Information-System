@@ -5,13 +5,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="7b707b6c-15ac-4fba-8263-5a26e54cd16e" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/Book.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Notification.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Schedule.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/schedule.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Course.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Course.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Main.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/QNA.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/QNA.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Student.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Student.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Teacher.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Teacher.java" afterDir="false" />
     </list>
@@ -69,6 +65,7 @@
     &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
     &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
     &quot;onboarding.tips.debug.path&quot;: &quot;H:/UIS/src/Main.java&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;CodeWithMe&quot;,
     &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
 }</component>
@@ -89,8 +86,8 @@
   <component name="SharedIndexes">
     <attachedChunks>
       <set>
-        <option value="bundled-jdk-9f38398b9061-18abd8497189-intellij.indexing.shared.core-IU-241.14494.240" />
-        <option value="bundled-js-predefined-1d06a55b98c1-74d2a5396914-JavaScript-IU-241.14494.240" />
+        <option value="bundled-jdk-9f38398b9061-39b83d9b5494-intellij.indexing.shared.core-IU-241.15989.150" />
+        <option value="bundled-js-predefined-1d06a55b98c1-91d5c284f522-JavaScript-IU-241.15989.150" />
       </set>
     </attachedChunks>
   </component>
@@ -108,7 +105,12 @@
       <workItem from="1713005504357" duration="1973000" />
       <workItem from="1713008865720" duration="327000" />
       <workItem from="1713186392634" duration="220000" />
-      <workItem from="1713879580153" duration="6025000" />
+      <workItem from="1713879580153" duration="7141000" />
+      <workItem from="1713886802278" duration="12000" />
+      <workItem from="1714056018617" duration="7000" />
+      <workItem from="1714060178865" duration="2000" />
+      <workItem from="1714656403131" duration="7000" />
+      <workItem from="1716820456058" duration="4720000" />
     </task>
     <task id="LOCAL-00001" summary="Added git command text">
       <option name="closed" value="true" />
@@ -134,7 +136,15 @@
       <option name="project" value="LOCAL" />
       <updated>1711442026365</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="Added &quot;Notification&quot; and &quot;book borrowing&quot; features.">
+      <option name="closed" value="true" />
+      <created>1713885929119</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1713885929119</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -156,6 +166,11 @@
     <MESSAGE value="Added git command text" />
     <MESSAGE value="Created two directional QNA system and it works!!" />
     <MESSAGE value="Added(ask question to all) and updated some QNA methods and commented." />
-    <option name="LAST_COMMIT_MESSAGE" value="" />
+    <MESSAGE value="Added &quot;Notification&quot; and &quot;book borrowing&quot; features." />
+    <option name="LAST_COMMIT_MESSAGE" value="Added &quot;Notification&quot; and &quot;book borrowing&quot; features." />
+  </component>
+  <component name="XSLT-Support.FileAssociations.UIState">
+    <expand />
+    <select />
   </component>
 </project>

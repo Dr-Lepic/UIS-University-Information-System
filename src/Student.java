@@ -1,3 +1,4 @@
+import java.io.*;
 import java.text.SimpleDateFormat;
 import java.time.LocalDate;
 import java.util.ArrayList;
@@ -7,6 +8,8 @@ public class Student implements QNA{
         
     String name;
     int Id;
+    //StringBuilder schedule;
+    ArrayList<String > schedule;
     ArrayList<Course> courseList = new ArrayList<>();
     ArrayList<Notification> notificationList = new ArrayList<>();
     ArrayList<Book> borrowedBookList = new ArrayList<>();
@@ -101,4 +104,29 @@ public class Student implements QNA{
         }
     }
     ////////////////////////////
+
+    //schedule
+    void getSchedule(){
+        schedule = new ArrayList<>();
+        try {
+            BufferedReader reader = new BufferedReader(new FileReader("schedule.txt"));
+            String line;
+            while((line = reader.readLine())!=null){
+                schedule.add(line);
+            }
+
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+
+    }
+    void showSchedule(){
+        System.out.println("Today's Schedule:");
+        for(String i:schedule){
+            System.out.println(i);
+        }
+    }
+    void getDefaultSchedule(){
+        getSchedule();
+    }
 }

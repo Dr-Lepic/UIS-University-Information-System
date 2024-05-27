@@ -73,6 +73,15 @@ public class Teacher implements QNA{
         }
     }
 
+    //schedule
+    void updateSchedule(Course course, int period, String update){
+        for(Student i : studentList){
+            if(i.courseList.contains(course)){
+                i.schedule.set(period-1, "***" +update+ "***");
+                i.notificationList.add(new Notification(course, "Extra class " + "'" + update + "'", this));
+            }
+        }
+    }
 
 
 }

@@ -1,6 +1,12 @@
+import java.io.BufferedWriter;
+import java.io.File;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.util.ArrayList;
+
 //This main Class is used for code testing!!
 public class Main {
-    public static void main(String[] args) {
+    public static void main(String[] args) throws IOException {
 
         Teacher teacher = new Teacher();
         Student student = new Student();
@@ -27,6 +33,19 @@ public class Main {
         //student.returnBook(book);
         student.showBorrowedBook();
 
+
+        student.getSchedule();
+        student.showSchedule();
+
+        teacher.studentList = new ArrayList<>();
+        teacher.studentList.add(student);
+        student.courseList.add(course);
+        teacher.updateSchedule(course, 3, "3 SWE4201 Room-501 10.30am-11.45am");
+        student.showSchedule();
+
+        student.getDefaultSchedule();
+        student.showSchedule();
+        student.showNotificationList();
 
     }
 }

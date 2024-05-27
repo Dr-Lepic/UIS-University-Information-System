@@ -1,0 +1,6 @@
+1 SWE4201 Room-302 8.00am-9.15am
+2 CSE4205 Room-301 9.15am-10.30am
+3 EMPTY Room-null 10.30am-11.45am
+4 CSE4203 Room-508 11.45am-1.00pm
+5 EMPTY Room-null 2.30pm-3.45pm
+6 EMPTY Room-null 3.45pm-5.00pm
