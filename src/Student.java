@@ -1,20 +1,57 @@
 import java.io.*;
 import java.text.SimpleDateFormat;
-import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Calendar;
+
 
 public class Student implements QNA{
         
     String name;
     int Id;
+    String email;
+    String phoneNumber;
+
     //StringBuilder schedule;
     ArrayList<String > schedule;
-    ArrayList<Course> courseList = new ArrayList<>();
-    ArrayList<Notification> notificationList = new ArrayList<>();
-    ArrayList<Book> borrowedBookList = new ArrayList<>();
+    ArrayList<Course> courseList;
+    ArrayList<Teacher> teacherList;
+    ArrayList<Notification> notificationList;
+    ArrayList<Book> borrowedBookList;
+
 
     //Will be a constructor here
+    public Student(){
+        schedule = new ArrayList<>();
+        courseList = new ArrayList<>();
+        teacherList = new ArrayList<>();
+        notificationList = new ArrayList<>();
+        borrowedBookList = new ArrayList<>();
+
+    }
+    public Student(String name, int Id, String email, String phoneNumber, Semester semester){
+        this.name = name;
+        this.Id = Id;
+        this.email = email;
+        this.phoneNumber = phoneNumber;
+        this.schedule = new ArrayList<>();
+
+        //courseList = new ArrayList<>(semester.courses);
+        this.courseList = new ArrayList<>();
+        for(Course c : semester.courses){
+            Course co =c;
+            courseList.add(co);
+        }
+        //courseList = new ArrayList<>(List.copyOf(Semester.courses));//Semester.courses;
+        teacherList = semester.teachers;
+        semester.students.add(this);
+
+        notificationList = new ArrayList<>();
+        borrowedBookList = new ArrayList<>();
+
+        for(Teacher t : semester.teachers){
+            t.addStudent(this);
+        }
+    }
 
     //
 
@@ -23,11 +60,12 @@ public class Student implements QNA{
 
     @Override
     public String toString() {
-        return "Student{" +
+        return
                 "name='" + name + '\'' +
                 ", Id=" + Id +
-                ", courseList=" + courseList +
-                '}';
+                ", email='" + email + '\'' +
+                ", phoneNumber='" + phoneNumber + '\''
+                ;
     }
 
     @Override
@@ -129,4 +167,62 @@ public class Student implements QNA{
     void getDefaultSchedule(){
         getSchedule();
     }
+    ////////////////////////
+
+    //Course Topic
+    void addTopic(Course course, String topic){
+        for(Course c:courseList){
+            if(c.equals(course)){
+                c.topics.add(topic);
+            }
+        }
+    }
+    void removeTopic(Course course, int number){
+        for(Course c:courseList){
+            if(c.equals(course)){
+                c.topics.remove(number-1);
+            }
+        }
+    }
+    void showTopic(Course course){
+        for(Course c:courseList){
+            if(c.equals(course)){
+                int i=1;
+                System.out.println("Topics for "+c.courseCode);
+                for(String str:c.topics){
+                    System.out.print(i + ". ");
+                    System.out.println(str);
+                    i++;
+                }
+            }
+        }
+    }
+    ///////////////////////
+
+    //Course add and remove
+    void addCourse(Course course){
+        courseList.add(course);
+    }
+    void removeCourse(Course course){
+        courseList.remove(course);
+    }
+    void showCourse(){
+        System.out.println("List of Courses: ");
+        for(Course c:courseList){
+            System.out.println(c);
+        }
+    }
+    /////////////
+
+    //Teacher list
+    void showTeachers(){
+        System.out.println("List of Teachers: ");
+        for(Teacher t:teacherList){
+            System.out.println(t);
+        }
+    }
+
+    //////////////
+
+
 }

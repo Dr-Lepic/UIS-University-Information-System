@@ -13,6 +13,30 @@ public class Course {
         int totalClass;
         int attendance;
 
+        Course(){
+                topics = new ArrayList<>();
+        }
 
-                    
+        public Course(String courseName, String courseCode, float credit, int totalClass) {
+                this.courseName = courseName;
+                this.courseCode = courseCode;
+                this.credit = credit;
+                this.totalClass = totalClass;
+                topics = new ArrayList<>();
+        }
+
+        void addTeacher(Teacher t){
+                teacher = t;
+                teacher.addCourse(this);
+        }
+
+        @Override
+        public String toString() {
+                return
+                        "courseName='" + courseName + '\'' +
+                        ", courseCode='" + courseCode + '\'' +
+                        ", credit=" + credit +
+                        ", teacher=" + teacher.name +
+                        ", totalClass=" + totalClass;
+        }
 }

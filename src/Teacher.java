@@ -3,24 +3,33 @@ import java.util.ArrayList;
 public class Teacher implements QNA{
     
     String name;
-    int mobileNo;
+    String  mobileNo;
     String emailAddress;
     ArrayList<Course> courseList;
     ArrayList<Student> studentList;
     //Will be a constructor here
+    Teacher(){
+        courseList = new ArrayList<>();
+        studentList = new ArrayList<>();
+
+    }
+    Teacher(String name, String  mobileNo, String emailAddress){
+        this.name = name;
+        this.mobileNo = mobileNo;
+        this.emailAddress = emailAddress;
+        courseList = new ArrayList<>();
+        studentList = new ArrayList<>();
+    }
 
     //
 
     //toString method
     @Override
     public String toString() {
-        return "Teacher{" +
-                "name='" + name + '\'' +
-                ", mobileNo=" + mobileNo +
-                ", emailAddress='" + emailAddress + '\'' +
-                ", courseList=" + courseList +
-                ", studentList=" + studentList +
-                '}';
+        return
+                "name= '" + name +
+                ", mobileNo= " + mobileNo +
+                ", emailAddress= '" + emailAddress;
     }
 
     @Override
@@ -82,6 +91,37 @@ public class Teacher implements QNA{
             }
         }
     }
+    ////////////////
 
+    //course
+    void addCourse(Course course){
+        courseList.add(course);
+    }
+    void removeCourse(Course course){
+        courseList.remove(course);
+    }
+    void showCourse(){
+        for(Course i : courseList){
+            System.out.println(i);
+        }
+    }
+    ///////////
+
+    //add and remove student
+    void addStudent(Student student){
+        studentList.add(student);
+    }
+    void removeStudent(Student student){
+        studentList.remove(student);
+    }
+    void showStudent(){
+        for(Student i : studentList){
+            System.out.println(i);
+        }
+    }
+    void removeAllStudents(){
+        studentList.clear();
+    }
+    /////////////
 
 }
