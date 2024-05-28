@@ -4,12 +4,15 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="7b707b6c-15ac-4fba-8263-5a26e54cd16e" name="Changes" comment="Added &quot;Schedule&quot; and &quot;Schedule Changing&quot; features.">
-      <change afterPath="$PROJECT_DIR$/src/Semester.java" afterDir="false" />
+    <list default="true" id="7b707b6c-15ac-4fba-8263-5a26e54cd16e" name="Changes" comment="Added &quot;Semester class&quot; for default course and teacher assignment, added constructor for some class, added course topic related features, course add remove for teacher and student, add/remove student for teacher.">
+      <change afterPath="$PROJECT_DIR$/Quiz.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Save.ser" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/CourseInfo.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/MainRestore.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Book.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Book.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Course.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Course.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Semester.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Semester.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Student.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Student.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Teacher.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Teacher.java" afterDir="false" />
     </list>
@@ -113,7 +116,8 @@
       <workItem from="1714060178865" duration="2000" />
       <workItem from="1714656403131" duration="7000" />
       <workItem from="1716820456058" duration="5886000" />
-      <workItem from="1716868409205" duration="8944000" />
+      <workItem from="1716868409205" duration="9566000" />
+      <workItem from="1716890133137" duration="2845000" />
     </task>
     <task id="LOCAL-00001" summary="Added git command text">
       <option name="closed" value="true" />
@@ -155,7 +159,15 @@
       <option name="project" value="LOCAL" />
       <updated>1716825478682</updated>
     </task>
-    <option name="localTasksCounter" value="6" />
+    <task id="LOCAL-00006" summary="Added &quot;Semester class&quot; for default course and teacher assignment, added constructor for some class, added course topic related features, course add remove for teacher and student, add/remove student for teacher.">
+      <option name="closed" value="true" />
+      <created>1716877462683</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1716877462683</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -179,7 +191,8 @@
     <MESSAGE value="Added(ask question to all) and updated some QNA methods and commented." />
     <MESSAGE value="Added &quot;Notification&quot; and &quot;book borrowing&quot; features." />
     <MESSAGE value="Added &quot;Schedule&quot; and &quot;Schedule Changing&quot; features." />
-    <option name="LAST_COMMIT_MESSAGE" value="Added &quot;Schedule&quot; and &quot;Schedule Changing&quot; features." />
+    <MESSAGE value="Added &quot;Semester class&quot; for default course and teacher assignment, added constructor for some class, added course topic related features, course add remove for teacher and student, add/remove student for teacher." />
+    <option name="LAST_COMMIT_MESSAGE" value="Added &quot;Semester class&quot; for default course and teacher assignment, added constructor for some class, added course topic related features, course add remove for teacher and student, add/remove student for teacher." />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />

@@ -2,12 +2,13 @@ import java.io.*;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.SortedMap;
 
 
-public class Student implements QNA{
+public class Student implements QNA, Serializable{
         
     String name;
-    int Id;
+    String  Id;
     String email;
     String phoneNumber;
 
@@ -28,7 +29,7 @@ public class Student implements QNA{
         borrowedBookList = new ArrayList<>();
 
     }
-    public Student(String name, int Id, String email, String phoneNumber, Semester semester){
+    public Student(String name, String  Id, String email, String phoneNumber, Semester semester){
         this.name = name;
         this.Id = Id;
         this.email = email;
@@ -173,14 +174,14 @@ public class Student implements QNA{
     void addTopic(Course course, String topic){
         for(Course c:courseList){
             if(c.equals(course)){
-                c.topics.add(topic);
+                c.info.topics.add(topic);
             }
         }
     }
     void removeTopic(Course course, int number){
         for(Course c:courseList){
             if(c.equals(course)){
-                c.topics.remove(number-1);
+                c.info.topics.remove(number-1);
             }
         }
     }
@@ -189,7 +190,7 @@ public class Student implements QNA{
             if(c.equals(course)){
                 int i=1;
                 System.out.println("Topics for "+c.courseCode);
-                for(String str:c.topics){
+                for(String str:c.info.topics){
                     System.out.print(i + ". ");
                     System.out.println(str);
                     i++;
@@ -223,6 +224,21 @@ public class Student implements QNA{
     }
 
     //////////////
+
+    //mark
+    void showMarks(Course course){
+        System.out.println("List of Marks: ");
+        for(Course c:courseList){
+            if(c.equals(course)){
+                for (String s:c.info.quiz){
+                    System.out.println(s);
+                }
+                System.out.println(c.info.midMark);
+                System.out.println(c.info.finalMark);
+            }
+        }
+        System.out.println();
+    }
 
 
 }

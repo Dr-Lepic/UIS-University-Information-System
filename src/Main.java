@@ -1,7 +1,4 @@
-import java.io.BufferedWriter;
-import java.io.File;
-import java.io.FileWriter;
-import java.io.IOException;
+import java.io.*;
 import java.util.ArrayList;
 
 //This main Class is used for code testing!!
@@ -71,7 +68,7 @@ public class Main {
 
         Semester semester = new Semester(2);
 
-        Student realStudent = new Student("Mahbub", 220042148, "mahbubrahman@iut-dhaka.edu",
+        Student realStudent = new Student("Mahbub", "220042148", "mahbubrahman@iut-dhaka.edu",
                 "01234567890", semester);
 
         realStudent.showCourse();
@@ -81,7 +78,7 @@ public class Main {
         realStudent.addTopic(realStudent.courseList.get(0), "Encapsulation");
 
 
-        Student realStudent2 = new Student("Mahbub", 220042148, "mahbubrahman@iut-dhaka.edu",
+        Student realStudent2 = new Student("Mahbub2", "220042157", "mahbubrahman@iut-dhaka.edu",
                 "01234567890", semester);
 
         realStudent2.addTopic(realStudent2.courseList.get(0), "Encapsulation new test");
@@ -91,5 +88,33 @@ public class Main {
         System.out.println(realStudent.teacherList.getFirst().studentList.getFirst().name);
         System.out.println();
         semester.teachers.getFirst().showStudent();
+
+        semester.teachers.getFirst().giveQuizMark(semester.courses.getFirst());
+
+        realStudent.showMarks(realStudent.courseList.getFirst());
+        realStudent2.showMarks(realStudent2.courseList.getFirst());
+
+
+        try
+        {
+            //Saving of object in a file
+            FileOutputStream file = new FileOutputStream("Save.ser");
+            ObjectOutputStream out = new ObjectOutputStream(file);
+
+            // Method for serialization of object
+            out.writeObject(semester);
+
+            out.close();
+            file.close();
+
+            System.out.println("Object has been serialized");
+
+        }
+
+        catch(IOException ex)
+        {
+            System.out.println(ex.getMessage());
+        }
+
     }
 }

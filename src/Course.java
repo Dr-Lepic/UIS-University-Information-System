@@ -1,20 +1,18 @@
+import java.io.Serializable;
 import java.util.ArrayList;
 
-public class Course {
+public class Course implements Serializable {
 
         String courseName;
         String courseCode;
         float credit;
         Teacher teacher;
-        ArrayList<String>topics;
-        double[] quiz = new double[4];
-        float midMark;
-        float finalMark;
         int totalClass;
-        int attendance;
+        CourseInfo info;
+
 
         Course(){
-                topics = new ArrayList<>();
+
         }
 
         public Course(String courseName, String courseCode, float credit, int totalClass) {
@@ -22,7 +20,7 @@ public class Course {
                 this.courseCode = courseCode;
                 this.credit = credit;
                 this.totalClass = totalClass;
-                topics = new ArrayList<>();
+                info = new CourseInfo();
         }
 
         void addTeacher(Teacher t){

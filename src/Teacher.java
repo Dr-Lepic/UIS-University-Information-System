@@ -1,6 +1,8 @@
+import java.io.*;
 import java.util.ArrayList;
+import java.util.Objects;
 
-public class Teacher implements QNA{
+public class Teacher implements QNA, Serializable{
     
     String name;
     String  mobileNo;
@@ -123,5 +125,30 @@ public class Teacher implements QNA{
         studentList.clear();
     }
     /////////////
+
+    //marking system
+    void giveQuizMark(Course course){
+        try {
+
+            BufferedReader reader = new BufferedReader(new FileReader("Quiz.txt"));
+            String line;
+            while((line = reader.readLine())!=null){
+                String[] parts = line.split(" ");
+
+                for(Student i : studentList){
+                    if(i.courseList.contains(course)){
+                        if (Objects.equals(i.Id, parts[0])){
+                            i.courseList.get(courseList.indexOf(course)).info.quiz.add(parts[1]);
+                            break;
+                        }
+
+                    }
+                }
+
+            }
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+    }
 
 }

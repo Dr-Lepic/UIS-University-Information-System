@@ -1,7 +1,7 @@
 
 import java.util.ArrayList;
 
-public class Semester {
+public class Semester implements java.io.Serializable{
     int semester;
      ArrayList<Course> courses;
      ArrayList<Student> students;
