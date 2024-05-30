@@ -1,8 +1,9 @@
+
+
 import java.io.*;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
-import java.util.SortedMap;
 
 
 public class Student implements QNA, Serializable{
@@ -28,7 +29,7 @@ public class Student implements QNA, Serializable{
         teacherList = new ArrayList<>();
         notificationList = new ArrayList<>();
         borrowedBookList = new ArrayList<>();
-        courseInfoList = new ArrayList<>();
+        courseInfoList = new ArrayList<>(6);
 
     }
     public Student(String name, String  Id, String email, String phoneNumber, Semester semester){
@@ -37,7 +38,7 @@ public class Student implements QNA, Serializable{
         this.email = email;
         this.phoneNumber = phoneNumber;
         this.schedule = new ArrayList<>();
-        courseInfoList = new ArrayList<>();
+        courseInfoList = new ArrayList<>(6);
 
         this.courseList = new ArrayList<>();
         courseList.addAll(semester.courses);
@@ -149,7 +150,7 @@ public class Student implements QNA, Serializable{
             }
         }
         if(book == null){
-            return "Book not found";
+            return "code.Book not found";
         }
         book.available = true;
         book.borrowDate = null;
@@ -190,7 +191,7 @@ public class Student implements QNA, Serializable{
     }
     String  showSchedule(){
         StringBuilder sb = new StringBuilder();
-        sb.append("Today's Schedule:").append("\n");
+        sb.append("Today's code.Schedule:").append("\n");
         for(String i:schedule){
             sb.append(i).append("\n");
         }
@@ -201,7 +202,7 @@ public class Student implements QNA, Serializable{
     }
     ////////////////////////
 
-    //Course Topic
+    //code.Course Topic
     void addTopic(Course course, String topic){
         for(Course c:courseList){
             if(c.equals(course)){
@@ -233,7 +234,7 @@ public class Student implements QNA, Serializable{
     }
     ///////////////////////
 
-    //Course add and remove
+    //code.Course add and remove
     void addCourse(Course course){
         courseList.add(course);
     }
@@ -250,7 +251,7 @@ public class Student implements QNA, Serializable{
     }
     /////////////
 
-    //Teacher list
+    //code.Teacher list
     String showTeachers(){
         StringBuilder sb = new StringBuilder();
         sb.append("List of Teachers: ");

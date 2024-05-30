@@ -1,4 +1,4 @@
-//this interface is used in Teacher and Student class
+//this interface is used in code.Teacher and code.Student class
 
 import java.util.ArrayList;
 public interface QNA {
