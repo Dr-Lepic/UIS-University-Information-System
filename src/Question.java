@@ -19,11 +19,9 @@ public class Question {
 
     @Override//toString method
     public String toString() {
-        return "Question{" +
-                "student=" + student +
-                ", teacher=" + teacher +
+        return "student=" + student.name +
+                ", teacher=" + teacher.name +
                 ", question='" + question + '\'' +
-                ", course=" + course +
-                '}';
+                ", course=" + course.courseCode;
     }
 }

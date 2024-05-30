@@ -10,9 +10,7 @@ public class Answer{
 
     @Override//toString method
     public String toString() {
-        return "Answer{" +
-                "question=" + question +
-                ", answer='" + answer + '\'' +
-                '}';
+        return "question=" + question +
+                "\nanswer: " + answer;
     }
 }

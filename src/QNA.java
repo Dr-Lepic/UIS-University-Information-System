@@ -12,6 +12,9 @@ public interface QNA {
     //to answer questions and store them in list. removes questions from the list
     void ansQuestion(Question question, String answer);
 
+    public String showQuestion();
+    public String showAnswer();
+
 
 
 }
