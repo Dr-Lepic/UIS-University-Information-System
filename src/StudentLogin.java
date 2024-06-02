@@ -3,32 +3,32 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-public class TeacherLogin extends JFrame {
+public class StudentLogin extends JFrame {
     private JTextField nameField, password;
-    Teacher userTeacher = null;
+    Student userStudent = null;
     private HomePageUI homePage;
 
-    public TeacherLogin(HomePageUI homePage) {
+    public StudentLogin(HomePageUI homePage) {
         this.homePage = homePage;
 
         Semester semester = Semester.restore();
 
-        setTitle("Teacher Login");
+        setTitle("Student Login");
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setBounds(100, 100, 450, 300);
 
-        JPanel mainPanelTeacher = new JPanel(new BorderLayout());
-        mainPanelTeacher.setPreferredSize(new Dimension(600, 400));
-        mainPanelTeacher.setBorder(BorderFactory.createEmptyBorder(10, 10, 10, 10));
+        JPanel mainPanelStudent = new JPanel(new BorderLayout());
+        mainPanelStudent.setPreferredSize(new Dimension(600, 400));
+        mainPanelStudent.setBorder(BorderFactory.createEmptyBorder(10, 10, 10, 10));
 
-        JPanel inputPanelTeacher = new JPanel(new GridLayout(4, 2));
-        inputPanelTeacher.add(new JLabel("Name:"));
+        JPanel inputPanelStudent = new JPanel(new GridLayout(4, 2));
+        inputPanelStudent.add(new JLabel("Name:"));
         nameField = new JTextField();
-        inputPanelTeacher.add(nameField);
+        inputPanelStudent.add(nameField);
 
-        inputPanelTeacher.add(new JLabel("Password:"));
+        inputPanelStudent.add(new JLabel("Password:"));
         password = new JTextField();
-        inputPanelTeacher.add(password);
+        inputPanelStudent.add(password);
 
         JButton login = new JButton("Sign In");
         login.setMaximumSize(new Dimension(20, 10));
@@ -37,18 +37,20 @@ public class TeacherLogin extends JFrame {
                 String name = nameField.getText();
                 String pass = password.getText();
 
-                for (Teacher teacher : semester.teachers) {
-                    if (teacher.name.equals(name) && teacher.mobileNo.equals(pass)) {
+                for (Student student : semester.students) {
+                    if (student.name.equals(name) && student.phoneNumber.equals(pass)) {
                         JOptionPane.showMessageDialog(null, "You have successfully logged in!");
-                        userTeacher = teacher;
+                        userStudent = student;
+                        dispose();
+                        new StudentHomePage(name).setVisible(true);
                         break;
                     }
                 }
-                if (userTeacher == null) {
-                    JOptionPane.showMessageDialog(TeacherLogin.this, "Incorrect name or password!", "Error", JOptionPane.ERROR_MESSAGE);
+                if (userStudent == null) {
+                    JOptionPane.showMessageDialog(StudentLogin.this, "Incorrect name or password!", "Error", JOptionPane.ERROR_MESSAGE);
                 } else {
-                    TeacherUI teacherUI = new TeacherUI(userTeacher);
-                    teacherUI.setVisible(true);
+                    StudentUI studentUI = new StudentUI(userStudent);
+                    studentUI.setVisible(true);
                     dispose();
                 }
             }
@@ -63,21 +65,20 @@ public class TeacherLogin extends JFrame {
             }
         });
 
-        // Create a new panel for the buttons
         JPanel buttonPanel = new JPanel();
         buttonPanel.add(login);
         buttonPanel.add(backButton);
 
-        inputPanelTeacher.add(new JLabel()); // Empty label to adjust grid
-        inputPanelTeacher.add(buttonPanel); // Add the button panel to the grid
+        inputPanelStudent.add(new JLabel());
+        inputPanelStudent.add(buttonPanel);
 
-        mainPanelTeacher.add(inputPanelTeacher, BorderLayout.CENTER);
-        add(mainPanelTeacher);
+        mainPanelStudent.add(inputPanelStudent, BorderLayout.CENTER);
+        add(mainPanelStudent);
         pack();
         setLocationRelativeTo(null);
     }
 
     public static void main(String[] args) {
-        new TeacherLogin(new HomePageUI()).setVisible(true);
+        new StudentLogin(new HomePageUI()).setVisible(true);
     }
 }

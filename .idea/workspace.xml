@@ -4,26 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="7b707b6c-15ac-4fba-8263-5a26e54cd16e" name="Changes" comment="Updated methods for GUI implementation.">
-      <change afterPath="$PROJECT_DIR$/.idea/uiDesigner.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/TeacherLogin.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/TeacherUI.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Save.ser" beforeDir="false" afterPath="$PROJECT_DIR$/Save.ser" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Answer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Answer.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Book.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Book.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Course.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Course.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/CourseInfo.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/CourseInfo.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Main.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/MainRestore.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/MainRestore.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Notification.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Notification.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/QNA.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/QNA.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Question.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Question.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Schedule.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Schedule.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Semester.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Semester.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Student.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Student.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Teacher.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Teacher.java" afterDir="false" />
-    </list>
+    <list default="true" id="7b707b6c-15ac-4fba-8263-5a26e54cd16e" name="Changes" comment="Added &quot;Semester class&quot; for default course and teacher assignment, added constructor for some class, added course topic related features, course add remove for teacher and student, add/remove student for teacher." />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -67,14 +48,12 @@
   "keyToString": {
     "ASKED_ADD_EXTERNAL_FILES": "true",
     "Application.Main.executor": "Run",
-    "Application.MainRestore.executor": "Run",
-    "Application.TeacherLogin.executor": "Run",
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
-    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
-    "git-widget-placeholder": "main",
+    "git-widget-placeholder": "Mahadi__1",
     "ignore.virus.scanning.warn.message": "true",
     "kotlin-language-version-configured": "true",
+    "last_opened_file_path": "C:/Users/mahad/Downloads/UIS-University-Information-System-main",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
@@ -87,21 +66,8 @@
 }]]></component>
   <component name="RunManager">
     <configuration name="Main" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="code.Main" />
+      <option name="MAIN_CLASS_NAME" value="Main" />
       <module name="UIS" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="TeacherLogin" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="UI.TeacherLogin" />
-      <module name="UIS" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="UI.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -109,15 +75,13 @@
     <recent_temporary>
       <list>
         <item itemvalue="Application.Main" />
-        <item itemvalue="Application.TeacherLogin" />
       </list>
     </recent_temporary>
   </component>
   <component name="SharedIndexes">
     <attachedChunks>
       <set>
-        <option value="bundled-jdk-9f38398b9061-39b83d9b5494-intellij.indexing.shared.core-IU-241.15989.150" />
-        <option value="bundled-js-predefined-1d06a55b98c1-91d5c284f522-JavaScript-IU-241.15989.150" />
+        <option value="jdk-21.0.1-openjdk-21.0.1-4caba194b151-23eed401" />
       </set>
     </attachedChunks>
   </component>
@@ -142,9 +106,7 @@
       <workItem from="1714656403131" duration="7000" />
       <workItem from="1716820456058" duration="5886000" />
       <workItem from="1716868409205" duration="9566000" />
-      <workItem from="1716890133137" duration="3463000" />
-      <workItem from="1717041074235" duration="4773000" />
-      <workItem from="1717059385104" duration="4138000" />
+      <workItem from="1716890133137" duration="2845000" />
     </task>
     <task id="LOCAL-00001" summary="Added git command text">
       <option name="closed" value="true" />
@@ -194,23 +156,7 @@
       <option name="project" value="LOCAL" />
       <updated>1716877462683</updated>
     </task>
-    <task id="LOCAL-00007" summary="Added &quot;mark System&quot; and &quot;Serialization, Deserialization&quot; for saving state.">
-      <option name="closed" value="true" />
-      <created>1716893246118</created>
-      <option name="number" value="00007" />
-      <option name="presentableId" value="LOCAL-00007" />
-      <option name="project" value="LOCAL" />
-      <updated>1716893246118</updated>
-    </task>
-    <task id="LOCAL-00008" summary="Updated methods for GUI implementation.">
-      <option name="closed" value="true" />
-      <created>1717060525968</created>
-      <option name="number" value="00008" />
-      <option name="presentableId" value="LOCAL-00008" />
-      <option name="project" value="LOCAL" />
-      <updated>1717060525968</updated>
-    </task>
-    <option name="localTasksCounter" value="9" />
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -235,9 +181,7 @@
     <MESSAGE value="Added &quot;Notification&quot; and &quot;book borrowing&quot; features." />
     <MESSAGE value="Added &quot;Schedule&quot; and &quot;Schedule Changing&quot; features." />
     <MESSAGE value="Added &quot;Semester class&quot; for default course and teacher assignment, added constructor for some class, added course topic related features, course add remove for teacher and student, add/remove student for teacher." />
-    <MESSAGE value="Added &quot;mark System&quot; and &quot;Serialization, Deserialization&quot; for saving state." />
-    <MESSAGE value="Updated methods for GUI implementation." />
-    <option name="LAST_COMMIT_MESSAGE" value="Updated methods for GUI implementation." />
+    <option name="LAST_COMMIT_MESSAGE" value="Added &quot;Semester class&quot; for default course and teacher assignment, added constructor for some class, added course topic related features, course add remove for teacher and student, add/remove student for teacher." />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />
