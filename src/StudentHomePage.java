@@ -60,19 +60,23 @@ public class StudentHomePage extends JFrame {
         scheduleButton.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 // Open Schedule page
-
+                openScheduleDialog(student);
             }
         });
 
         teacherButton.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 // Open Teacher page
+                openTeacherDialog(student);
             }
         });
 
         courseButton.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 // Open Course page
+                dispose();
+                new CourseUI(student).setVisible(true);
+                //openCourseDialog(student);
             }
         });
 
@@ -115,46 +119,180 @@ public class StudentHomePage extends JFrame {
     private void openScheduleDialog(Student student) {
         JDialog answerDialog = new JDialog(this, "Today's Schedule", true);
         answerDialog.setSize(400, 300);
-        answerDialog.setLayout(new BorderLayout(10, 10));
+        answerDialog.setLayout(new BorderLayout());
         answerDialog.setLocationRelativeTo(this);
 
         JTextArea scheduleTextArea = new JTextArea();
         scheduleTextArea.setEditable(false);
         JScrollPane scheduleScrollPane = new JScrollPane(scheduleTextArea);
 
-       // scheduleTextArea.setText(student.);
-        answerDialog.add(scheduleScrollPane, BorderLayout.CENTER);
-        JLabel questionLabel = new JLabel("Question:");
-        JComboBox<String> questionDropdown = new JComboBox<>(new String[]{"Question 1", "Question 2", "Question 3"});
-        JLabel answerLabel = new JLabel("Answer:");
-        JTextField answerField = new JTextField();
-        JButton submitButton = new JButton("Submit");
+        scheduleTextArea.setText(student.showSchedule());
+        answerDialog.add(scheduleTextArea, BorderLayout.CENTER);
+
+        JPanel buttonPanel = new JPanel(new GridLayout(1, 2));
+
+        JButton submitButton = new JButton("Back");
+        JButton defaultButton = new JButton("Default");
+
+        buttonPanel.add(submitButton);
+        buttonPanel.add(defaultButton);
+
+        answerDialog.add(buttonPanel, BorderLayout.SOUTH);
 
         submitButton.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
-                // Handle the submission of the answer
-                Question question = null;
-                try {
-                    question = student.questionList.get(questionDropdown.getSelectedIndex());
-                }catch (ArrayIndexOutOfBoundsException ex){
-                    JOptionPane.showMessageDialog(answerDialog, "No question found", "Error", JOptionPane.ERROR_MESSAGE);
-                }
+                answerDialog.dispose();
+            }
+        });
+        defaultButton.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                student.getDefaultSchedule();
+                scheduleTextArea.setText(student.showSchedule());
+            }
+        });
+        answerDialog.setVisible(true);
+    }
 
+    private void openTeacherDialog(Student student) {
+        JDialog answerDialog = new JDialog(this, "Teacher List", true);
+        answerDialog.setSize(400, 300);
+        answerDialog.setLayout(new BorderLayout());
+        answerDialog.setLocationRelativeTo(this);
 
-                student.ansQuestion(question, answerField.getText());
-                JOptionPane.showMessageDialog(answerDialog, "Answer Submitted");
+        JTextArea scheduleTextArea = new JTextArea();
+        scheduleTextArea.setEditable(false);
+        JScrollPane scheduleScrollPane = new JScrollPane(scheduleTextArea);
+
+        scheduleTextArea.setText(student.showTeachers());
+        answerDialog.add(scheduleTextArea, BorderLayout.CENTER);
+
+        JPanel buttonPanel = new JPanel(new GridLayout(1, 2));
+
+        JButton submitButton = new JButton("Back");
+        JButton defaultButton = new JButton();
+
+        buttonPanel.add(defaultButton);
+        buttonPanel.add(submitButton);
+
+        answerDialog.add(buttonPanel, BorderLayout.SOUTH);
+
+        submitButton.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
                 answerDialog.dispose();
             }
         });
 
-        answerDialog.add(questionLabel);
-        answerDialog.add(questionDropdown);
-        answerDialog.add(answerLabel);
-        answerDialog.add(answerField);
-        answerDialog.add(new JLabel()); // Empty placeholder
-        answerDialog.add(submitButton);
+        answerDialog.setVisible(true);
+    }
+
+    private void openCourseDialog(Student student) {
+        JDialog answerDialog = new JDialog(this, "Course", true);
+        answerDialog.setSize(400, 300);
+        answerDialog.setLayout(new BorderLayout());
+        answerDialog.setLocationRelativeTo(this);
+
+        JTextArea scheduleTextArea = new JTextArea();
+        scheduleTextArea.setEditable(false);
+        JScrollPane scheduleScrollPane = new JScrollPane(scheduleTextArea);
+
+        scheduleTextArea.setText(student.showCourse());
+        answerDialog.add(scheduleTextArea, BorderLayout.CENTER);
+
+        JPanel buttonPanel = new JPanel(new GridLayout(1, 4));
+
+        JButton submitButton = new JButton("Back");
+        JButton addTopicButton = new JButton("Add Topic");
+        JButton removeTopicButton = new JButton("Remove Topic");
+        JButton showTopicButton = new JButton("Show Topic");
+
+        buttonPanel.add(addTopicButton);
+        buttonPanel.add(removeTopicButton);
+        buttonPanel.add(showTopicButton);
+        buttonPanel.add(submitButton);
+
+        answerDialog.add(buttonPanel, BorderLayout.SOUTH);
+
+        submitButton.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                answerDialog.dispose();
+            }
+        });
+
+        addTopicButton.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                addTopicDialog(student);
+            }
+        });
+
+        removeTopicButton.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                removeTopicDialog(student);
+            }
+        });
 
         answerDialog.setVisible(true);
+    }
+
+    private  void addTopicDialog(Student student){
+        JDialog answerDialog = new JDialog(this, "Add Topic", true);
+        answerDialog.setSize(400, 200);
+        answerDialog.setLayout(new GridLayout(4, 2, 10, 10));
+        answerDialog.setLocationRelativeTo(this);
+
+        JLabel nameLabel = new JLabel("Course Code:");
+        JTextField nameField = new JTextField();
+        JLabel topicLabel = new JLabel("Topic:");
+        JTextField topicField = new JTextField();
+        JButton submitButton = new JButton("Submit");
+
+        submitButton.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                Course course = null;
+                for(Course c: student.courseList){
+                    if(c.courseCode.equals(nameField.getText())){
+                        course = c;
+                        break;
+                    }
+                }
+                if(course == null){
+                    JOptionPane.showMessageDialog(answerDialog, "No course found", "Error", JOptionPane.ERROR_MESSAGE);
+                }
+                student.addTopic(course, topicField.getText());
+                JOptionPane.showMessageDialog(answerDialog, "Topic Added", "Success", JOptionPane.INFORMATION_MESSAGE);
+                answerDialog.dispose();
+            }
+        });
+    }
+
+    private  void removeTopicDialog(Student student){
+        JDialog answerDialog = new JDialog(this, "Remove Topic", true);
+        answerDialog.setSize(400, 200);
+        answerDialog.setLayout(new GridLayout(4, 2, 10, 10));
+        answerDialog.setLocationRelativeTo(this);
+
+        JLabel nameLabel = new JLabel("Course Code:");
+        JTextField nameField = new JTextField();
+        JLabel topicLabel = new JLabel("Number:");
+        JTextField topicField = new JTextField();
+        JButton submitButton = new JButton("Submit");
+
+        submitButton.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                Course course = null;
+                for(Course c: student.courseList){
+                    if(c.courseCode.equals(nameField.getText())){
+                        course = c;
+                        break;
+                    }
+                }
+                if(course == null){
+                    JOptionPane.showMessageDialog(answerDialog, "No course found", "Error", JOptionPane.ERROR_MESSAGE);
+                }
+                student.removeTopic(course, Integer.parseInt(topicField.getText()));
+                JOptionPane.showMessageDialog(answerDialog, "Topic Removed", "Success", JOptionPane.INFORMATION_MESSAGE);
+                answerDialog.dispose();
+            }
+        });
     }
 
     public static void main(String[] args) {

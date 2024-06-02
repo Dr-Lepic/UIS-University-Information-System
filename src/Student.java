@@ -34,6 +34,7 @@ public class Student implements QNA, Serializable{
         notificationList = new ArrayList<>();
         borrowedBookList = new ArrayList<>();
         courseInfoList = new ArrayList<>(6);
+        getSchedule();
 
     }
     public Student(String name, String  Id, String email, String phoneNumber,
