@@ -6,8 +6,8 @@ import java.awt.event.ActionListener;
 public class StudentHomePage extends JFrame {
     private String username; // Assuming the username is passed to this class
 
-    public StudentHomePage(String username) {
-        this.username = username;
+    public StudentHomePage(Student student) {
+        this.username = student.name;
 
 
         setTitle("Student Home Page");
@@ -38,7 +38,7 @@ public class StudentHomePage extends JFrame {
 
         qnaButton.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
-                new QNAUI().setVisible(true);
+                new QNAUI(student).setVisible(true);
                 dispose();
             }
         });
@@ -46,20 +46,21 @@ public class StudentHomePage extends JFrame {
         noteButton.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 dispose();
-                new NoteUI().setVisible(true);
+                new NoteUI(student).setVisible(true);
             }
         });
 
         bookButton.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 dispose();
-                new BookUI().setVisible(true);
+                new BookUI(student).setVisible(true);
             }
         });
 
         scheduleButton.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 // Open Schedule page
+
             }
         });
 
@@ -89,6 +90,7 @@ public class StudentHomePage extends JFrame {
 
         logoutButton.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
+                Semester.save(student.semester);
                 dispose();
                 new HomePageUI().setVisible(true);
             }
@@ -110,10 +112,57 @@ public class StudentHomePage extends JFrame {
         setLocationRelativeTo(null);
     }
 
+    private void openScheduleDialog(Student student) {
+        JDialog answerDialog = new JDialog(this, "Today's Schedule", true);
+        answerDialog.setSize(400, 300);
+        answerDialog.setLayout(new BorderLayout(10, 10));
+        answerDialog.setLocationRelativeTo(this);
+
+        JTextArea scheduleTextArea = new JTextArea();
+        scheduleTextArea.setEditable(false);
+        JScrollPane scheduleScrollPane = new JScrollPane(scheduleTextArea);
+
+       // scheduleTextArea.setText(student.);
+        answerDialog.add(scheduleScrollPane, BorderLayout.CENTER);
+        JLabel questionLabel = new JLabel("Question:");
+        JComboBox<String> questionDropdown = new JComboBox<>(new String[]{"Question 1", "Question 2", "Question 3"});
+        JLabel answerLabel = new JLabel("Answer:");
+        JTextField answerField = new JTextField();
+        JButton submitButton = new JButton("Submit");
+
+        submitButton.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                // Handle the submission of the answer
+                Question question = null;
+                try {
+                    question = student.questionList.get(questionDropdown.getSelectedIndex());
+                }catch (ArrayIndexOutOfBoundsException ex){
+                    JOptionPane.showMessageDialog(answerDialog, "No question found", "Error", JOptionPane.ERROR_MESSAGE);
+                }
+
+
+                student.ansQuestion(question, answerField.getText());
+                JOptionPane.showMessageDialog(answerDialog, "Answer Submitted");
+                answerDialog.dispose();
+            }
+        });
+
+        answerDialog.add(questionLabel);
+        answerDialog.add(questionDropdown);
+        answerDialog.add(answerLabel);
+        answerDialog.add(answerField);
+        answerDialog.add(new JLabel()); // Empty placeholder
+        answerDialog.add(submitButton);
+
+        answerDialog.setVisible(true);
+    }
+
     public static void main(String[] args) {
         SwingUtilities.invokeLater(new Runnable() {
             public void run() {
-                new StudentHomePage("JohnDoe").setVisible(true);
+                Student student = new Student();
+                student.name = "JohnDoe";
+                new StudentHomePage(student).setVisible(true);
             }
         });
     }

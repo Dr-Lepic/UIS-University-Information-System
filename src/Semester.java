@@ -1,7 +1,5 @@
 
-import java.io.FileInputStream;
-import java.io.IOException;
-import java.io.ObjectInputStream;
+import java.io.*;
 import java.util.ArrayList;
 
 public class Semester implements java.io.Serializable{
@@ -70,5 +68,29 @@ public class Semester implements java.io.Serializable{
             System.out.println("ClassNotFoundException is caught");
         }
         return semester;
+    }
+
+    public static void save(Semester semester){
+
+        try
+        {
+            //Saving of object in a file
+            FileOutputStream file = new FileOutputStream("Save.ser");
+            ObjectOutputStream out = new ObjectOutputStream(file);
+
+            // Method for serialization of object
+            out.writeObject(semester);
+
+            out.close();
+            file.close();
+
+            System.out.println("Object has been serialized");
+
+        }
+
+        catch(IOException ex)
+        {
+            System.out.println(ex.getMessage());
+        }
     }
 }

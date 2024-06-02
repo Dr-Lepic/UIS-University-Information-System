@@ -70,7 +70,7 @@ public class Main {
         Semester semester = new Semester(2);
 
         Student realStudent = new Student("Mahbub", "220042148", "mahbubrahman@iut-dhaka.edu",
-                "01234567890", semester);
+                "01234567890","CSE", "SWE", "abc", semester);
 
         realStudent.showCourse();
         realStudent.showTeachers();
@@ -80,7 +80,7 @@ public class Main {
 
 
         Student realStudent2 = new Student("Mahbub2", "220042157", "mahbubrahman@iut-dhaka.edu",
-                "01234567890", semester);
+                "01234567890","CSE", "SWE", "abc", semester);
 
         //realStudent2.addTopic(realStudent2.courseList.get(0), "Encapsulation new test");
 

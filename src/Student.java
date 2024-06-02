@@ -12,6 +12,10 @@ public class Student implements QNA, Serializable{
     String  Id;
     String email;
     String phoneNumber;
+    Semester semester; // for serialization purpose
+    String department;
+    String program;
+    private String password;
 
     //StringBuilder schedule;
     ArrayList<String > schedule;
@@ -32,13 +36,18 @@ public class Student implements QNA, Serializable{
         courseInfoList = new ArrayList<>(6);
 
     }
-    public Student(String name, String  Id, String email, String phoneNumber, Semester semester){
+    public Student(String name, String  Id, String email, String phoneNumber,
+                   String department, String program,String password, Semester semester){
         this.name = name;
         this.Id = Id;
         this.email = email;
         this.phoneNumber = phoneNumber;
         this.schedule = new ArrayList<>();
         courseInfoList = new ArrayList<>(6);
+        this.semester = semester;
+        this.department = department;
+        this.program = program;
+        this.password = password;
 
         this.courseList = new ArrayList<>();
         courseList.addAll(semester.courses);
@@ -47,6 +56,7 @@ public class Student implements QNA, Serializable{
 
         notificationList = new ArrayList<>();
         borrowedBookList = new ArrayList<>();
+        getSchedule();
 
         for(Teacher t : semester.teachers){
             t.addStudent(this);
@@ -54,7 +64,13 @@ public class Student implements QNA, Serializable{
 
     }
 
+
     //
+
+    public String getPassword() {
+        return password;
+    }
+
 
     //toString method
 
@@ -94,6 +110,9 @@ public class Student implements QNA, Serializable{
         for(Question q : this.questionList){
             question.append(q.question).append("\n");
         }
+        if(question.isEmpty()){
+            return "No question YET!";
+        }
         return question.toString();
     }
 
@@ -101,6 +120,9 @@ public class Student implements QNA, Serializable{
         StringBuilder answer = new StringBuilder();
         for(Answer a : this.answerList){
             answer.append(a.answer).append("\n");
+        }
+        if(answer.isEmpty()){
+            return "No answer YET!";
         }
         return answer.toString();
     }
@@ -150,7 +172,7 @@ public class Student implements QNA, Serializable{
             }
         }
         if(book == null){
-            return "code.Book not found";
+            return " Book not found";
         }
         book.available = true;
         book.borrowDate = null;
@@ -191,7 +213,7 @@ public class Student implements QNA, Serializable{
     }
     String  showSchedule(){
         StringBuilder sb = new StringBuilder();
-        sb.append("Today's code.Schedule:").append("\n");
+        sb.append("Today's  Schedule:").append("\n");
         for(String i:schedule){
             sb.append(i).append("\n");
         }
@@ -202,7 +224,7 @@ public class Student implements QNA, Serializable{
     }
     ////////////////////////
 
-    //code.Course Topic
+    // Course Topic
     void addTopic(Course course, String topic){
         for(Course c:courseList){
             if(c.equals(course)){
@@ -234,7 +256,7 @@ public class Student implements QNA, Serializable{
     }
     ///////////////////////
 
-    //code.Course add and remove
+    // Course add and remove
     void addCourse(Course course){
         courseList.add(course);
     }
@@ -251,7 +273,7 @@ public class Student implements QNA, Serializable{
     }
     /////////////
 
-    //code.Teacher list
+    // Teacher list
     String showTeachers(){
         StringBuilder sb = new StringBuilder();
         sb.append("List of Teachers: ");
