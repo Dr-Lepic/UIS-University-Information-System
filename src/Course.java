@@ -1,5 +1,6 @@
+
+
 import java.io.Serializable;
-import java.util.ArrayList;
 
 public class Course implements Serializable {
 
@@ -8,7 +9,7 @@ public class Course implements Serializable {
         float credit;
         Teacher teacher;
         int totalClass;
-        CourseInfo info;
+
 
 
         Course(){
@@ -20,7 +21,7 @@ public class Course implements Serializable {
                 this.courseCode = courseCode;
                 this.credit = credit;
                 this.totalClass = totalClass;
-                info = new CourseInfo();
+
         }
 
         void addTeacher(Teacher t){

@@ -1,5 +1,6 @@
+
+
 import java.io.*;
-import java.util.ArrayList;
 
 //This main Class is used for code testing!!
 public class Main {
@@ -27,7 +28,7 @@ public class Main {
         student.clearNotificationList();
         student.showNotificationList();
 
-        /*                                      Tested Book borrowing features
+        /*                                      Tested code.Book borrowing features
         student.borrowBook(book, 20);
         //student.returnBook(book);
         student.showBorrowedBook();
@@ -75,24 +76,24 @@ public class Main {
         realStudent.showTeachers();
         realStudent.getSchedule();
         realStudent.showSchedule();
-        realStudent.addTopic(realStudent.courseList.get(0), "Encapsulation");
+        //realStudent.addTopic(realStudent.courseList.get(0), "Encapsulation");
 
 
         Student realStudent2 = new Student("Mahbub2", "220042157", "mahbubrahman@iut-dhaka.edu",
                 "01234567890", semester);
 
-        realStudent2.addTopic(realStudent2.courseList.get(0), "Encapsulation new test");
+        //realStudent2.addTopic(realStudent2.courseList.get(0), "Encapsulation new test");
 
-        realStudent.showTopic(realStudent.courseList.get(0));
-        realStudent2.showTopic(realStudent2.courseList.get(0));
+        //realStudent.showTopic(realStudent.courseList.get(0));
+        //realStudent2.showTopic(realStudent2.courseList.get(0));
         System.out.println(realStudent.teacherList.getFirst().studentList.getFirst().name);
         System.out.println();
         semester.teachers.getFirst().showStudent();
 
-        semester.teachers.getFirst().giveQuizMark(semester.courses.getFirst());
+        //semester.teachers.getFirst().giveQuizMark(semester.courses.getFirst());
 
-        realStudent.showMarks(realStudent.courseList.getFirst());
-        realStudent2.showMarks(realStudent2.courseList.getFirst());
+        //realStudent.showMarks(realStudent.courseList.getFirst());
+        //realStudent2.showMarks(realStudent2.courseList.getFirst());
 
 
         try

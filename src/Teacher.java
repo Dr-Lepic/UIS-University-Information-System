@@ -1,14 +1,16 @@
+
+
 import java.io.*;
 import java.util.ArrayList;
 import java.util.Objects;
 
 public class Teacher implements QNA, Serializable{
     
-    String name;
-    String  mobileNo;
-    String emailAddress;
-    ArrayList<Course> courseList;
-    ArrayList<Student> studentList;
+    public String name;
+    public String  mobileNo;
+    public String emailAddress;
+    public ArrayList<Course> courseList;
+    public ArrayList<Student> studentList;
     //Will be a constructor here
     Teacher(){
         courseList = new ArrayList<>();
@@ -39,6 +41,8 @@ public class Teacher implements QNA, Serializable{
         Question question1 = new Question(student, this, course, question);
         this.askedQuestionList.add(question1);
         student.questionList.add(question1);
+        student.notificationList.add(new Notification(
+                course, " asked a code.Question.", teacher));
 
     }
 
@@ -48,12 +52,14 @@ public class Teacher implements QNA, Serializable{
         question.student.askedQuestionList.remove(question);
         question.student.answerList.add(answer1);
         question.teacher.answerList.add(answer1);
+        question.student.notificationList.add(new Notification(
+                question.course, " Answered your  question.", this));
 
     }
 
     //a method to ask question to all students of a particular course.
     //will run a for-each loop in the student list of teacher. If course matches,
-    //then question will be inserted to his(Student) list
+    //then question will be inserted to his(code.Student) list
 
     public void askQuestionAll( Teacher teacher,String question, Course course){
         Question question1 = new Question(this, course, question);
@@ -61,8 +67,26 @@ public class Teacher implements QNA, Serializable{
             if(i.courseList.contains(course)){
                 question1.student = i;
                 i.questionList.add(question1);
+                i.notificationList.add(new Notification(
+                        course, " asked a code.Question.", teacher));
             }
         }
+    }
+
+    public String showQuestion(){
+        StringBuilder question = new StringBuilder();
+        for(Question q : this.questionList){
+            question.append(q.question).append("\n");
+        }
+        return question.toString();
+    }
+
+    public String showAnswer(){
+        StringBuilder answer = new StringBuilder();
+        for(Answer a : this.answerList){
+            answer.append(a.answer).append("\n");
+        }
+        return answer.toString();
     }
 
     //a method to clear answer list.
@@ -138,7 +162,7 @@ public class Teacher implements QNA, Serializable{
                 for(Student i : studentList){
                     if(i.courseList.contains(course)){
                         if (Objects.equals(i.Id, parts[0])){
-                            i.courseList.get(courseList.indexOf(course)).info.quiz.add(parts[1]);
+                            i.courseInfoList.get(courseList.indexOf(course)).quiz.add(parts[1]);
                             break;
                         }
 

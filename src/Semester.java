@@ -1,11 +1,14 @@
 
+import java.io.FileInputStream;
+import java.io.IOException;
+import java.io.ObjectInputStream;
 import java.util.ArrayList;
 
 public class Semester implements java.io.Serializable{
     int semester;
-     ArrayList<Course> courses;
-     ArrayList<Student> students;
-     ArrayList<Teacher> teachers;
+    public ArrayList<Course> courses;
+    public ArrayList<Student> students;
+    public ArrayList<Teacher> teachers;
 
     public Semester(int num) {
         switch(num) {
@@ -37,5 +40,35 @@ public class Semester implements java.io.Serializable{
                 //we are only considering SWE here.
                 //other can be added in a similar way....
         }
+    }
+
+    public static Semester restore(){
+        Semester semester = null;
+        try
+        {
+            // Reading the object from a file
+            FileInputStream file = new FileInputStream("Save.ser");
+            ObjectInputStream in = new ObjectInputStream(file);
+
+            // Method for deserialization of object
+            semester = (Semester) in.readObject();
+
+            in.close();
+            file.close();
+
+            System.out.println("Object has been deserialized ");
+
+        }
+
+        catch(IOException ex)
+        {
+            System.out.println("IOException is caught");
+        }
+
+        catch(ClassNotFoundException ex)
+        {
+            System.out.println("ClassNotFoundException is caught");
+        }
+        return semester;
     }
 }

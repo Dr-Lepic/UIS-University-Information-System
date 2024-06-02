@@ -1,4 +1,4 @@
-//this interface is used in Teacher and Student class
+//this interface is used in code.Teacher and code.Student class
 
 import java.util.ArrayList;
 public interface QNA {
@@ -11,6 +11,9 @@ public interface QNA {
 
     //to answer questions and store them in list. removes questions from the list
     void ansQuestion(Question question, String answer);
+
+    public String showQuestion();
+    public String showAnswer();
 
 
 
