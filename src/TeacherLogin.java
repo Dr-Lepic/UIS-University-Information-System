@@ -47,7 +47,7 @@ public class TeacherLogin extends JFrame {
                 if (userTeacher == null) {
                     JOptionPane.showMessageDialog(TeacherLogin.this, "Incorrect name or password!", "Error", JOptionPane.ERROR_MESSAGE);
                 } else {
-                    TeacherUI teacherUI = new TeacherUI(userTeacher);
+                    TeacherHomePage teacherUI = new TeacherHomePage(userTeacher);
                     teacherUI.setVisible(true);
                     dispose();
                 }

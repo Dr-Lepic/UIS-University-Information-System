@@ -9,7 +9,7 @@ import java.io.IOException;
 public class NoteUI extends JFrame {
     public String username;
 
-    public NoteUI() {
+    public NoteUI(Student student) {
         setTitle("Notes");
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setBounds(100, 100, 600, 400); // Adjust the window size if needed
@@ -32,7 +32,7 @@ public class NoteUI extends JFrame {
 
         backButton.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
-                new StudentHomePage(username).setVisible(true);
+                new StudentHomePage(student).setVisible(true);
                 dispose();
             }
         });
@@ -75,7 +75,7 @@ public class NoteUI extends JFrame {
     public static void main(String[] args) {
         SwingUtilities.invokeLater(new Runnable() {
             public void run() {
-                new NoteUI().setVisible(true);
+                new NoteUI(new Student()).setVisible(true);
             }
         });
     }

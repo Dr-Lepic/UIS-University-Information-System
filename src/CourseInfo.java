@@ -13,7 +13,10 @@ public class CourseInfo implements Serializable {
 
     CourseInfo(){
         quiz = new ArrayList<>();
-        topics = new ArrayList<>();
+        topics = new ArrayList<>(10);
+        topics.add("");
+        topics.add("");
+        topics.add("");
     }
 
 }

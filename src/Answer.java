@@ -1,6 +1,6 @@
 
 
-public class Answer{
+public class Answer implements java.io.Serializable{
 
     Question question;
     String answer;

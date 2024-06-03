@@ -1,7 +1,8 @@
 //this interface is used in code.Teacher and code.Student class
 
+import java.io.Serializable;
 import java.util.ArrayList;
-public interface QNA {
+public interface QNA extends Serializable {
     ArrayList <Question> questionList = new ArrayList<>();//to store the incoming questions
     ArrayList <Answer> answerList = new ArrayList<>();//to store the given answer
     ArrayList <Question> askedQuestionList = new ArrayList<>();//to store asked question.

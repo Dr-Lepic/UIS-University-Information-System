@@ -11,18 +11,21 @@ public class Teacher implements QNA, Serializable{
     public String emailAddress;
     public ArrayList<Course> courseList;
     public ArrayList<Student> studentList;
+    Semester semester;// to serialize
     //Will be a constructor here
     Teacher(){
         courseList = new ArrayList<>();
         studentList = new ArrayList<>();
 
     }
-    Teacher(String name, String  mobileNo, String emailAddress){
+    Teacher(String name, String  mobileNo, String emailAddress, Semester semester){
         this.name = name;
         this.mobileNo = mobileNo;
         this.emailAddress = emailAddress;
         courseList = new ArrayList<>();
         studentList = new ArrayList<>();
+        this.semester = semester;
+        semester.teachers.add(this);
     }
 
     //
@@ -39,7 +42,7 @@ public class Teacher implements QNA, Serializable{
     @Override
     public void askQuestion(Student student, Teacher teacher,String question, Course course ) {
         Question question1 = new Question(student, this, course, question);
-        this.askedQuestionList.add(question1);
+        //this.askedQuestionList.add(question1);
         student.questionList.add(question1);
         student.notificationList.add(new Notification(
                 course, " asked a code.Question.", teacher));
@@ -50,8 +53,9 @@ public class Teacher implements QNA, Serializable{
     public void ansQuestion(Question question, String answer) {
         Answer answer1 = new Answer(question, answer);
         question.student.askedQuestionList.remove(question);
+        question.student.questionList.remove(question);
         question.student.answerList.add(answer1);
-        question.teacher.answerList.add(answer1);
+        //question.teacher.answerList.add(answer1);
         question.student.notificationList.add(new Notification(
                 question.course, " Answered your  question.", this));
 
@@ -78,6 +82,9 @@ public class Teacher implements QNA, Serializable{
         for(Question q : this.questionList){
             question.append(q.question).append("\n");
         }
+        if(question.isEmpty()){
+            question.append("No question available");
+        }
         return question.toString();
     }
 
@@ -85,6 +92,9 @@ public class Teacher implements QNA, Serializable{
         StringBuilder answer = new StringBuilder();
         for(Answer a : this.answerList){
             answer.append(a.answer).append("\n");
+        }
+        if(answer.isEmpty()){
+            answer.append("No answer available");
         }
         return answer.toString();
     }

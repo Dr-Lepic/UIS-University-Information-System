@@ -1,7 +1,7 @@
-
+import java.io.Serializable;
 
 // To give update of class and quiz to students.
-public class Notification {
+public class Notification implements Serializable {
 
     public Course course;
     public String message;

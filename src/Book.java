@@ -2,7 +2,7 @@
 
 import java.util.Date;
 
-public class Book {
+public class Book implements java.io.Serializable{
 
     public String name;
     public String author;

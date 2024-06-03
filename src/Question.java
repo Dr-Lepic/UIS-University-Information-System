@@ -1,6 +1,6 @@
 
 
-public class Question {
+public class Question implements java.io.Serializable{
     Student student;
     Teacher teacher;
     String question;

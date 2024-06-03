@@ -4,10 +4,12 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 public class CreateStudent extends JFrame {
-    private JTextField nameField, mobileField, deptField, programField, studentIdField;
+    private JTextField nameField, mobileField, deptField, programField, studentIdField, mailField;
     private JPasswordField passwordField;
 
     public CreateStudent(HomePageUI homePage) {
+
+        Semester semester = Semester.restore();
         setTitle("Create Student ID");
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setBounds(100, 100, 450, 400);
@@ -15,7 +17,7 @@ public class CreateStudent extends JFrame {
         JPanel mainPanel = new JPanel(new BorderLayout());
         mainPanel.setBorder(BorderFactory.createEmptyBorder(10, 10, 10, 10));
 
-        JPanel inputPanel = new JPanel(new GridLayout(7, 2));
+        JPanel inputPanel = new JPanel(new GridLayout(8, 2));
         inputPanel.add(new JLabel("Name:"));
         nameField = new JTextField();
         inputPanel.add(nameField);
@@ -36,6 +38,10 @@ public class CreateStudent extends JFrame {
         studentIdField = new JTextField();
         inputPanel.add(studentIdField);
 
+        inputPanel.add(new JLabel("E-mail:"));
+        mailField = new JTextField();
+        inputPanel.add(mailField);
+
         inputPanel.add(new JLabel("Password:"));
         passwordField = new JPasswordField();
         inputPanel.add(passwordField);
@@ -49,9 +55,12 @@ public class CreateStudent extends JFrame {
                 String department = deptField.getText();
                 String program = programField.getText();
                 String studentId = studentIdField.getText();
+                String mail = mailField.getText();
                 String password = new String(passwordField.getPassword());
 
                 // Here implement logic to create a student ID
+                Student student = new Student(name, studentId, mail, mobileNumber, department, program, password, semester);
+                Semester.save(semester);
                 // For demonstration, let's just display the entered data
                 String studentInfo = "Name: " + name + "\n" +
                         "Mobile Number: " + mobileNumber + "\n" +

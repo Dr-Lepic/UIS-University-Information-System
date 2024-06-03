@@ -10,7 +10,7 @@ public class HomePageUI extends JFrame {
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setBounds(100, 100, 800, 400);
 
-        ImageIcon icon = new ImageIcon("D:\\Home Page.png");
+        ImageIcon icon = new ImageIcon(".\\Home Page.png");
 
         Image img = icon.getImage();
         Image scaledImg = img.getScaledInstance(150, 150, Image.SCALE_SMOOTH);

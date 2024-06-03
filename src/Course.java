@@ -1,6 +1,7 @@
 
 
 import java.io.Serializable;
+import java.util.ArrayList;
 
 public class Course implements Serializable {
 
@@ -9,6 +10,7 @@ public class Course implements Serializable {
         float credit;
         Teacher teacher;
         int totalClass;
+        ArrayList<String> topics;
 
 
 
@@ -21,6 +23,7 @@ public class Course implements Serializable {
                 this.courseCode = courseCode;
                 this.credit = credit;
                 this.totalClass = totalClass;
+                topics = new ArrayList<>();
 
         }
 
@@ -32,10 +35,10 @@ public class Course implements Serializable {
         @Override
         public String toString() {
                 return
-                        "courseName='" + courseName + '\'' +
-                        ", courseCode='" + courseCode + '\'' +
-                        ", credit=" + credit +
-                        ", teacher=" + teacher.name +
-                        ", totalClass=" + totalClass;
+                        "courseName= " + courseName + ' ' +
+                        ", courseCode= " + courseCode + ' ' +
+                        ", credit= " + credit +
+                        ", teacher= " + teacher.name +
+                        ", totalClass= " + totalClass;
         }
 }

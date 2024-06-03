@@ -4,7 +4,8 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 public class StudentLogin extends JFrame {
-    private JTextField nameField, password;
+    private JTextField nameField;
+    private JPasswordField password;
     Student userStudent = null;
     private HomePageUI homePage;
 
@@ -27,7 +28,7 @@ public class StudentLogin extends JFrame {
         inputPanelStudent.add(nameField);
 
         inputPanelStudent.add(new JLabel("Password:"));
-        password = new JTextField();
+        password = new JPasswordField();
         inputPanelStudent.add(password);
 
         JButton login = new JButton("Sign In");
@@ -38,11 +39,11 @@ public class StudentLogin extends JFrame {
                 String pass = password.getText();
 
                 for (Student student : semester.students) {
-                    if (student.name.equals(name) && student.phoneNumber.equals(pass)) {
+                    if (student.name.equals(name) && student.getPassword().equals(pass)) {
                         JOptionPane.showMessageDialog(null, "You have successfully logged in!");
                         userStudent = student;
                         dispose();
-                        new StudentHomePage(name).setVisible(true);
+                        new StudentHomePage(userStudent).setVisible(true);
                         break;
                     }
                 }

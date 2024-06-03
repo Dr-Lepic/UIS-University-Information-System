@@ -6,8 +6,8 @@ import java.awt.event.ActionListener;
 public class StudentHomePage extends JFrame {
     private String username; // Assuming the username is passed to this class
 
-    public StudentHomePage(String username) {
-        this.username = username;
+    public StudentHomePage(Student student) {
+        this.username = student.name;
 
 
         setTitle("Student Home Page");
@@ -38,7 +38,7 @@ public class StudentHomePage extends JFrame {
 
         qnaButton.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
-                new QNAUI().setVisible(true);
+                new QNAUI(student).setVisible(true);
                 dispose();
             }
         });
@@ -46,38 +46,44 @@ public class StudentHomePage extends JFrame {
         noteButton.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 dispose();
-                new NoteUI().setVisible(true);
+                new NoteUI(student).setVisible(true);
             }
         });
 
         bookButton.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 dispose();
-                new BookUI().setVisible(true);
+                new BookUI(student).setVisible(true);
             }
         });
 
         scheduleButton.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 // Open Schedule page
+                openScheduleDialog(student);
             }
         });
 
         teacherButton.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 // Open Teacher page
+                openTeacherDialog(student);
             }
         });
 
         courseButton.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 // Open Course page
+                dispose();
+                new CourseUI(student).setVisible(true);
+                //openCourseDialog(student);
             }
         });
 
         notification.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 // Open Notification page
+                JOptionPane.showMessageDialog(null, student.showNotificationList(),"Notification", JOptionPane.QUESTION_MESSAGE);
             }
         });
 
@@ -89,6 +95,7 @@ public class StudentHomePage extends JFrame {
 
         logoutButton.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
+                Semester.save(student.semester);
                 dispose();
                 new HomePageUI().setVisible(true);
             }
@@ -110,10 +117,81 @@ public class StudentHomePage extends JFrame {
         setLocationRelativeTo(null);
     }
 
+    private void openScheduleDialog(Student student) {
+        JDialog answerDialog = new JDialog(this, "Today's Schedule", true);
+        answerDialog.setSize(400, 300);
+        answerDialog.setLayout(new BorderLayout());
+        answerDialog.setLocationRelativeTo(this);
+
+        JTextArea scheduleTextArea = new JTextArea();
+        scheduleTextArea.setEditable(false);
+        JScrollPane scheduleScrollPane = new JScrollPane(scheduleTextArea);
+
+        scheduleTextArea.setText(student.showSchedule());
+        answerDialog.add(scheduleTextArea, BorderLayout.CENTER);
+
+        JPanel buttonPanel = new JPanel(new GridLayout(1, 2));
+
+        JButton submitButton = new JButton("Back");
+        JButton defaultButton = new JButton("Default");
+
+        buttonPanel.add(submitButton);
+        buttonPanel.add(defaultButton);
+
+        answerDialog.add(buttonPanel, BorderLayout.SOUTH);
+
+        submitButton.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                answerDialog.dispose();
+            }
+        });
+        defaultButton.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                student.getDefaultSchedule();
+                scheduleTextArea.setText(student.showSchedule());
+            }
+        });
+        answerDialog.setVisible(true);
+    }
+
+    private void openTeacherDialog(Student student) {
+        JDialog answerDialog = new JDialog(this, "Teacher List", true);
+        answerDialog.setSize(400, 300);
+        answerDialog.setLayout(new BorderLayout());
+        answerDialog.setLocationRelativeTo(this);
+
+        JTextArea scheduleTextArea = new JTextArea();
+        scheduleTextArea.setEditable(false);
+        JScrollPane scheduleScrollPane = new JScrollPane(scheduleTextArea);
+
+        scheduleTextArea.setText(student.showTeachers());
+        answerDialog.add(scheduleTextArea, BorderLayout.CENTER);
+
+        JPanel buttonPanel = new JPanel(new GridLayout(1, 2));
+
+        JButton submitButton = new JButton("Back");
+
+
+        buttonPanel.add(new JLabel());
+        buttonPanel.add(submitButton);
+
+        answerDialog.add(buttonPanel, BorderLayout.SOUTH);
+
+        submitButton.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                answerDialog.dispose();
+            }
+        });
+
+        answerDialog.setVisible(true);
+    }
+
     public static void main(String[] args) {
         SwingUtilities.invokeLater(new Runnable() {
             public void run() {
-                new StudentHomePage("JohnDoe").setVisible(true);
+                Student student = new Student();
+                student.name = "JohnDoe";
+                new StudentHomePage(student).setVisible(true);
             }
         });
     }

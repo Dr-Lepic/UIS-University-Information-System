@@ -8,6 +8,7 @@ public class CreateTeacher extends JFrame {
     private JPasswordField passwordField;
 
     public CreateTeacher(HomePageUI homePage) {
+        Semester semester = Semester.restore();
         setTitle("Create Teacher ID");
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setBounds(100, 100, 450, 300);
@@ -47,6 +48,7 @@ public class CreateTeacher extends JFrame {
                 String password = new String(passwordField.getPassword());
 
                 // Here implement logic to create a teacher ID
+                Teacher teacher = new Teacher(name, mobileNumber, department,semester);
                 // For demonstration, let's just display the entered data
                 String teacherInfo = "Name: " + name + "\n" +
                         "Mobile Number: " + mobileNumber + "\n" +
